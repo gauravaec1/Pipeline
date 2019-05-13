@@ -1,0 +1,24 @@
+pipeline {
+    agent any
+    stages {
+            stage('Checkout') {
+            steps {
+                echo 'Checkout'
+                git branch: 'master',  url: 'https://github.com/gauravaec1/Hello.git'
+            }
+        }
+
+        stage('Build') {
+            steps {
+                echo 'Building'
+                sh 'javac HelloWorld.java'
+                sh 'java HelloWorld'
+            }
+        }
+        stage('Test') {
+            steps {
+                echo 'Testing'
+            }
+        }
+    }
+}
